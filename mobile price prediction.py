@@ -40,31 +40,15 @@ Train_Data_train, Train_Data_test, Traindata_classlabels_train, Traindata_classl
 
 # # **Data set visualization**
 
-# In[ ]:
 
 
 dataset.head()
 
-
-# In[ ]:
-
-
 dataset.isnull().sum()
 
 
-# In[ ]:
-
-
 dataset.info()
-
-
-# In[ ]:
-
-
 dataset.describe()
-
-
-# In[ ]:
 
 
 plt.figure(figsize=(20,20))
@@ -78,7 +62,6 @@ plt.show()
 # 
 # # **linear regression**
 
-# In[ ]:
 
 
 lm = LinearRegression()
@@ -94,8 +77,6 @@ print(confusion_matrix(pred,Traindata_classlabels_test))
 
 # # **K Nearest Neighbours**
 
-# In[ ]:
-
 
 arr=[]
 for k in range(3,100,1):
@@ -105,8 +86,6 @@ for k in range(3,100,1):
     arr.append(f1_score(Traindata_classlabels_test,pred,average='macro'))
 
 
-# In[ ]:
-
 
 x=[]
 for i in range(3,100,1):
@@ -114,14 +93,8 @@ for i in range(3,100,1):
 plt.plot(x,arr)
 
 
-# In[ ]:
-
 
 plt.plot(x[10:20],arr[10:20])
-
-
-# In[ ]:
-
 
 knn = KNeighborsClassifier(n_neighbors=16)
 knn.fit(Train_Data_train,Traindata_classlabels_train)
@@ -134,9 +107,6 @@ print(confusion_matrix(pred,Traindata_classlabels_test))
 
 
 # # **Decision Tree**
-
-# In[ ]:
-
 
 clf = DecisionTreeClassifier(random_state=40) 
 clf_parameters = {
@@ -152,9 +122,6 @@ print("Decision tree score = ")
 grid_search.best_estimator_.score(Train_Data_test,Traindata_classlabels_test)
 
 
-# In[ ]:
-
-
 pred = grid_search.best_estimator_.predict(Train_Data_test)
 pred_acc = accuracy_score(Traindata_classlabels_test,pred)
 pred_f = f1_score(Traindata_classlabels_test,pred,average='macro')
@@ -162,9 +129,6 @@ print(grid_search.best_estimator_)
 print("prediction accuracy = "+str(pred_acc))
 print("prediction f measure = "+str(pred_f))
 print(confusion_matrix(pred,Traindata_classlabels_test))
-
-
-# In[ ]:
 
 
 a=0
@@ -180,14 +144,7 @@ while(a<0.01):
     
 plt.plot(x,arr)
 
-
-# In[ ]:
-
-
 plt.plot(x[40:60],arr[40:60])
-
-
-# In[ ]:
 
 
 clf = DecisionTreeClassifier(ccp_alpha=0.00425, criterion='entropy', max_depth=15,random_state=40)
@@ -202,8 +159,6 @@ print(confusion_matrix(pred,Traindata_classlabels_test))
 
 # # **Random forest classifier**
 
-# In[ ]:
-
 
 clf = RandomForestClassifier(n_estimators=200)
 clf_parameters = {
@@ -217,10 +172,6 @@ print(grid_search.best_estimator_)
 print("random forest score = ")
 grid_search.best_estimator_.score(Train_Data_test,Traindata_classlabels_test)
 
-
-# In[ ]:
-
-
 pred = grid_search.best_estimator_.predict(Train_Data_test)
 pred_acc = accuracy_score(Traindata_classlabels_test,pred)
 pred_f = f1_score(Traindata_classlabels_test,pred,average='macro')
@@ -232,8 +183,6 @@ print(confusion_matrix(pred,Traindata_classlabels_test))
 
 # # **Gaussian Naive bayes**
 
-# In[ ]:
-
 
 clf = GaussianNB()
 clf_parameters = {
@@ -244,9 +193,6 @@ grid_search.fit(Train_Data_train,Traindata_classlabels_train)
 print(grid_search.best_estimator_)
 print("gaussian score = ")
 grid_search.best_estimator_.score(Train_Data_test,Traindata_classlabels_test)
-
-
-# In[ ]:
 
 
 from sklearn.metrics import precision_score
@@ -263,9 +209,6 @@ print(confusion_matrix(pred,Traindata_classlabels_test))
 
 # # **Support vector machine**
 
-# In[3]:
-
-
 clf = svm.SVC(class_weight='balanced',probability=True)
 clf_parameters = {
             'C':[0.01,0.1,1,10,100],
@@ -279,8 +222,6 @@ print("svm score = ")
 grid_search.best_estimator_.score(Train_Data_test,Traindata_classlabels_test)
 
 
-# In[4]:
-
 
 pred = grid_search.best_estimator_.predict(Train_Data_test)
 pred_acc = accuracy_score(Traindata_classlabels_test,pred)
@@ -290,8 +231,6 @@ print("prediction accuracy = "+str(pred_acc))
 print("prediction f measure = "+str(pred_f))
 print(confusion_matrix(pred,Traindata_classlabels_test))
 
-
-# In[8]:
 
 
 a=0.0005
@@ -308,25 +247,11 @@ while(a<0.02):
 plt.plot(x,arr)
 
 
-# In[9]:
-
-
 plt.plot(x[0:100],arr[0:100])
-
-
-# In[11]:
-
 
 np.max(arr)
 
-
-# In[12]:
-
-
 print(arr[10],x[10])
-
-
-# In[30]:
 
 
 clf = svm.SVC(C=0.0055, class_weight='balanced', kernel='linear', probability=True)
@@ -343,8 +268,6 @@ print(confusion_matrix(pred,Traindata_classlabels_test))
 
 # # **Logistic regression**
 
-# In[15]:
-
 
 clf = LogisticRegression(multi_class="multinomial",solver="lbfgs")
 clf_parameters = {
@@ -360,13 +283,9 @@ grid_search.best_estimator_.score(Train_Data_test,Traindata_classlabels_test)
 # l1 lasso l2 ridge
 
 
-# In[16]:
-
 
 print(grid_search.best_estimator_)
 
-
-# In[34]:
 
 
 clf = LogisticRegression(C=0.015625, multi_class='multinomial', solver='newton-cg')
@@ -379,10 +298,6 @@ print("prediction precision = "+str(precision))
 print("prediction accuracy = "+str(pred_acc))
 print("prediction f measure = "+str(pred_f))
 print(confusion_matrix(pred,Traindata_classlabels_test))
-
-
-# In[18]:
-
 
 a=0.0005
 arr=[]
@@ -398,19 +313,11 @@ while(a<0.02):
 plt.plot(x,arr)
 
 
-# In[19]:
-
-
 np.max(arr)
-
-
-# In[24]:
 
 
 print(arr[9],x[9])
 
-
-# In[32]:
 
 
 clf = LogisticRegression(C=0.005, multi_class='multinomial', solver='newton-cg')
@@ -425,17 +332,11 @@ print("prediction f measure = "+str(pred_f))
 print(confusion_matrix(pred,Traindata_classlabels_test))
 
 
-# In[ ]:
-
-
-#logmodel.score(Train_Data_test,Traindata_classlabels_test)
-
 
 # # **Prediction of data**
 # 
 # We have found that the support vector machine has the highest f value as compared to other models used in this project. So I am using this model to predict the target values of the test data
 
-# In[33]:
 
 
 Test_Data=pd.read_csv('testdata.csv')
@@ -445,7 +346,6 @@ predict = clf.predict(Test_Data)
 predict
 
 
-# In[ ]:
 
 
 
