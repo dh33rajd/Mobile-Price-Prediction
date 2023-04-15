@@ -32,7 +32,7 @@ get_ipython().run_line_magic('matplotlib', 'inline')
 # In[2]:
 
 
-dataset=pd.read_csv('Merged_Data.csv')
+dataset=pd.read_csv('Train_Data.csv')
 Train_Data=pd.read_csv('Train_Data.csv')
 Traindata_classlabels=pd.read_csv('Traindata_classlabels.csv')
 Train_Data_train, Train_Data_test, Traindata_classlabels_train, Traindata_classlabels_test = train_test_split(Train_Data, Traindata_classlabels, test_size=0.4, random_state=53)
