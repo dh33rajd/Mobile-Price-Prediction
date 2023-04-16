@@ -24,7 +24,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix
 from sklearn.metrics import f1_score
 
-get_ipython().run_line_magic('matplotlib', 'inline')
+#get_ipython().run_line_magic('matplotlib', 'inline')
 
 
 # # **importing and splitting**
@@ -60,20 +60,7 @@ plt.show()
 
 # 
 # 
-# # **linear regression**
-
-
-
-lm = LinearRegression()
-lm.fit(Train_Data_train,Traindata_classlabels_train)
-lm.score(Train_Data_test,Traindata_classlabels_test)
-pred = lm.predict(Train_Data_test)
-pred_acc = accuracy_score(Traindata_classlabels_test,pred)
-pred_f = f1_score(Traindata_classlabels_test,pred,average='macro')
-print("prediction accuracy = "+str(pred_acc))
-print("prediction f measure = "+str(pred_f))
-print(confusion_matrix(pred,Traindata_classlabels_test))
-
+# # 
 
 # # **K Nearest Neighbours**
 
